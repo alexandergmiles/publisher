@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+
+	"gitlab.com/alexandergmiles/publisher/internal/announcer"
 )
 
 // Pass in JSON file containing the types of message
@@ -15,6 +17,10 @@ func main() {
 	messageConfig := flag.String("config", "", "Path to .JSON configuration file which maps message versions")
 	flag.Parse()
 	print(messageConfig)
+
+	sqsAnnouncer := announcer.SQSAnnouncer{}
+
+	fmt.Println(sqsAnnouncer)
 }
 
 func parseOptions() {
